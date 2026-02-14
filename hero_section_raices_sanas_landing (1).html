@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Raíces Sanas — Gotas naturales</title>
+
+  <!-- Tipografía moderna (Inter). Puedes cambiar a Poppins si prefieres -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       Raíces Sanas — Hero Section
+       ========================= */
+
+    :root{
+      --leaf: #2E7D32;      /* verde hoja */
+      --earth: #6D4C41;     /* marrón tierra */
+      --bg: #FAFAFA;        /* fondo claro */
+      --text: #111827;      /* gris muy oscuro */
+      --muted: #4B5563;     /* gris medio */
+      --card: #FFFFFF;
+      --ring: rgba(46,125,50,.22);
+      --shadow: 0 14px 40px rgba(17,24,39,.10);
+      --shadowSoft: 0 10px 24px rgba(17,24,39,.08);
+      --radius: 18px;
+      --radiusSm: 14px;
+      --container: 1100px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+
+    /* Accesibilidad */
+    :focus-visible{ outline: 3px solid var(--ring); outline-offset: 3px; border-radius: 12px; }
+
+    .container{
+      width: min(var(--container), calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    /* Fondo con sensación natural/eco (suave y ligero) */
+    .page{
+      position: relative;
+      overflow: hidden;
+      padding: 1rem 0 2.25rem;
+    }
+
+    .page::before{
+      content: "";
+      position: absolute;
+      inset: -40% -20% auto -20%;
+      height: 520px;
+      background:
+        radial-gradient(closest-side, rgba(46,125,50,.14), transparent 68%),
+        radial-gradient(closest-side, rgba(109,76,65,.10), transparent 64%);
+      filter: blur(2px);
+      transform: translate3d(0,0,0);
+      pointer-events: none;
+    }
+
+    .page::after{
+      content: "";
+      position: absolute;
+      inset: auto -30% -45% -30%;
+      height: 520px;
+      background:
+        radial-gradient(closest-side, rgba(46,125,50,.10), transparent 70%),
+        radial-gradient(closest-side, rgba(109,76,65,.08), transparent 68%);
+      pointer-events: none;
+    }
+
+    /* Header */
+    header{
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .75rem 0;
+    }
+
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brandMark{
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(46,125,50,.18), rgba(46,125,50,.06));
+      border: 1px solid rgba(46,125,50,.18);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(46,125,50,.10);
+    }
+
+    .brandMark svg{ width: 18px; height: 18px; }
+
+    nav ul{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: .35rem;
+      align-items: center;
+    }
+
+    .navLink{
+      padding: .55rem .8rem;
+      border-radius: 999px;
+      color: rgba(17,24,39,.86);
+      font-weight: 500;
+      font-size: .95rem;
+      transition: background .15s ease, transform .15s ease;
+    }
+
+    .navLink:hover{
+      background: rgba(46,125,50,.08);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      z-index: 2;
+      padding: 1.15rem 0 0;
+    }
+
+    .heroGrid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      margin-top: .85rem;
+    }
+
+    .kicker{
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .38rem .7rem;
+      border-radius: 999px;
+      background: rgba(46,125,50,.08);
+      border: 1px solid rgba(46,125,50,.16);
+      color: rgba(46,125,50,.92);
+      font-weight: 600;
+      font-size: .9rem;
+    }
+
+    .kickerDot{
+      width: .55rem;
+      height: .55rem;
+      border-radius: 999px;
+      background: var(--leaf);
+      box-shadow: 0 0 0 5px rgba(46,125,50,.12);
+    }
+
+    h1{
+      margin: .8rem 0 .55rem;
+      font-size: clamp(1.9rem, 3.6vw, 3.15rem);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+
+    .accent{
+      color: var(--leaf);
+    }
+
+    .subtitle{
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+      max-width: 54ch;
+    }
+
+    .benefits{
+      display: grid;
+      gap: .55rem;
+      margin: 1rem 0 1.05rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .benefits li{
+      display: flex;
+      gap: .65rem;
+      align-items: center;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(17,24,39,.06);
+      border-radius: 14px;
+      padding: .7rem .85rem;
+      box-shadow: 0 10px 22px rgba(17,24,39,.04);
+      backdrop-filter: blur(6px);
+    }
+
+    .benefitIcon{
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(46,125,50,.10);
+      border: 1px solid rgba(46,125,50,.18);
+      flex: 0 0 auto;
+      font-size: 1.1rem;
+    }
+
+    .benefitText{
+      display: grid;
+      gap: .1rem;
+    }
+
+    .benefitText b{ font-weight: 600; }
+    .benefitText span{ color: rgba(75,85,99,.92); font-size: .95rem; }
+
+    .ctaRow{
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+      margin: .95rem 0 .85rem;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: .9rem 1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+      user-select: none;
+    }
+
+    .btnPrimary{
+      background: linear-gradient(180deg, #2F8B38, #2B7430);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(46,125,50,.22);
+    }
+
+    .btnPrimary:hover{ transform: translateY(-1px); box-shadow: 0 18px 44px rgba(46,125,50,.26); }
+
+    .btnSecondary{
+      background: rgba(255,255,255,.75);
+      border-color: rgba(17,24,39,.10);
+      color: rgba(17,24,39,.86);
+      box-shadow: 0 10px 22px rgba(17,24,39,.06);
+      backdrop-filter: blur(6px);
+    }
+
+    .btnSecondary:hover{ transform: translateY(-1px); border-color: rgba(46,125,50,.22); }
+
+    .microProof{
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem .8rem;
+      align-items: center;
+      color: rgba(17,24,39,.72);
+      font-size: .93rem;
+    }
+
+    .stars{
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .45rem .65rem;
+      border-radius: 999px;
+      background: rgba(109,76,65,.07);
+      border: 1px solid rgba(109,76,65,.16);
+    }
+
+    .trustLine{
+      margin-top: .65rem;
+      padding: .85rem .95rem;
+      background: var(--card);
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: var(--radiusSm);
+      box-shadow: var(--shadowSoft);
+      color: rgba(17,24,39,.72);
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem .75rem;
+      align-items: center;
+      font-size: .95rem;
+    }
+
+    .trustPill{
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .35rem .55rem;
+      border-radius: 999px;
+      background: rgba(46,125,50,.06);
+      border: 1px solid rgba(46,125,50,.14);
+      color: rgba(46,125,50,.88);
+      font-weight: 600;
+      font-size: .88rem;
+    }
+
+    .disclaimer{
+      margin-top: .75rem;
+      color: rgba(75,85,99,.92);
+      font-size: .88rem;
+    }
+
+    /* Columna derecha: mockup */
+    .productCard{
+      background: rgba(255,255,255,.8);
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.1rem;
+      display: grid;
+      gap: .9rem;
+      align-content: start;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      min-height: 360px;
+    }
+
+    .productCard::before{
+      content: "";
+      position: absolute;
+      inset: -60px -80px auto auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(46,125,50,.22), rgba(46,125,50,0) 62%);
+      filter: blur(1px);
+      pointer-events: none;
+    }
+
+    .productTop{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+    }
+
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .45rem .65rem;
+      border-radius: 999px;
+      background: rgba(46,125,50,.08);
+      border: 1px solid rgba(46,125,50,.16);
+      color: rgba(46,125,50,.9);
+      font-weight: 700;
+      font-size: .86rem;
+    }
+
+    .priceHint{
+      font-weight: 700;
+      color: rgba(109,76,65,.92);
+      font-size: .95rem;
+      white-space: nowrap;
+    }
+
+    .mockupWrap{
+      display: grid;
+      place-items: center;
+      padding: .45rem 0 .35rem;
+    }
+
+    .mockupCaption{
+      text-align: center;
+      color: rgba(75,85,99,.92);
+      font-size: .92rem;
+      margin: 0;
+    }
+
+    /* Botella (SVG) */
+    .bottle{
+      width: min(300px, 85%);
+      height: auto;
+      filter: drop-shadow(0 18px 28px rgba(17,24,39,.16));
+    }
+
+    .miniCards{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .65rem;
+      margin-top: .15rem;
+    }
+
+    .mini{
+      border-radius: 14px;
+      border: 1px solid rgba(17,24,39,.08);
+      background: rgba(250,250,250,.65);
+      padding: .75rem .85rem;
+      display: grid;
+      gap: .25rem;
+    }
+
+    .mini b{ font-weight: 700; }
+    .mini span{ color: rgba(75,85,99,.92); font-size: .93rem; }
+
+    /* Responsive (desktop) */
+    @media (min-width: 920px){
+      .page{ padding: 1.25rem 0 3rem; }
+      .hero{ padding-top: 1.25rem; }
+      .heroGrid{
+        grid-template-columns: 1.08fr .92fr;
+        gap: 2.1rem;
+        margin-top: 1.15rem;
+      }
+      .ctaRow{ flex-direction: row; align-items: center; }
+      .btn{ padding: .95rem 1.15rem; }
+      .productCard{ min-height: 520px; padding: 1.25rem; }
+      .miniCards{ grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Navegación minimalista en móvil (oculta links si no caben) */
+    @media (max-width: 520px){
+      nav ul{ display: none; }
+    }
+
+    /* Animación sutil (reducible) */
+    @media (prefers-reduced-motion: no-preference){
+      .productCard{ animation: floatIn .65s ease both; }
+      @keyframes floatIn{
+        from{ opacity: 0; transform: translateY(10px); }
+        to{ opacity: 1; transform: translateY(0); }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="container">
+        <div class="nav">
+          <!-- Logo simple (texto) -->
+          <a class="brand" href="#inicio" aria-label="Raíces Sanas">
+            <span class="brandMark" aria-hidden="true">
+              <!-- Ícono hoja minimalista -->
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 4C12.8 4 8.5 7.4 6.6 10.2C4.7 13 4.4 16.8 4.4 20C7.6 20 11.4 19.7 14.2 17.8C17 15.9 20.4 11.6 20.4 4.4" stroke="rgba(46,125,50,.95)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M7 17C9.8 14.2 13.5 10.8 19 6" stroke="rgba(109,76,65,.85)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>Raíces <span style="color: var(--leaf);">Sanas</span></span>
+          </a>
+
+          <!-- Navegación mínima -->
+          <nav aria-label="Navegación principal">
+            <ul>
+              <li><a class="navLink" href="#inicio">Inicio</a></li>
+              <li><a class="navLink" href="#beneficios">Beneficios</a></li>
+              <li><a class="navLink" href="#comprar">Comprar</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="hero" id="inicio">
+      <div class="container">
+        <div class="heroGrid">
+          <!-- Columna izquierda: copy + beneficios + CTA -->
+          <section aria-label="Propuesta de valor">
+            <div class="kicker"><span class="kickerDot" aria-hidden="true"></span> Bienestar natural para tu noche</div>
+
+            <!-- 1) Headline emocional y calmante -->
+            <h1>
+              Apaga el ruido del día y despierta con
+              <span class="accent">calma real</span>.
+            </h1>
+
+            <!-- 2) Subtítulo breve (beneficios, sin promesas médicas) -->
+            <p class="subtitle">
+              Gotas naturales diseñadas para acompañar tu rutina nocturna: descanso más profundo, mente más ligera y una sensación de bienestar desde lo orgánico.
+            </p>
+
+            <!-- 3) Lista de 3 beneficios con íconos -->
+            <ul class="benefits" id="beneficios">
+              <li>
+                <span class="benefitIcon" aria-hidden="true">🌙</span>
+                <span class="benefitText">
+                  <b>Sueño más profundo</b>
+                  <span>Ideal para cerrar el día con una sensación de descanso.</span>
+                </span>
+              </li>
+              <li>
+                <span class="benefitIcon" aria-hidden="true">🍃</span>
+                <span class="benefitText">
+                  <b>Natural y orgánico</b>
+                  <span>Ingredientes de origen vegetal, pensados para tu bienestar.</span>
+                </span>
+              </li>
+              <li>
+                <span class="benefitIcon" aria-hidden="true">🧘</span>
+                <span class="benefitText">
+                  <b>Ayuda a soltar el estrés</b>
+                  <span>Un ritual suave para bajar revoluciones antes de dormir.</span>
+                </span>
+              </li>
+            </ul>
+
+            <!-- 4) CTA principal + 5) secundario -->
+            <div class="ctaRow" id="comprar">
+              <a class="btn btnPrimary" href="#comprar" role="button" aria-label="Comprar gotas naturales">
+                Comprar ahora y descansar mejor
+                <span aria-hidden="true">→</span>
+              </a>
+              <a class="btn btnSecondary" href="#ingredientes" role="button" aria-label="Ver ingredientes y cómo funciona">
+                Ver ingredientes
+              </a>
+            </div>
+
+            <!-- 6) Prueba social (sin datos médicos exactos) -->
+            <div class="microProof" aria-label="Prueba social">
+              <span class="stars">⭐⭐⭐⭐⭐ <strong>+500</strong> personas ya duermen mejor</span>
+              <span>Rutina simple • Sensación natural • Resultados que se sienten con constancia</span>
+            </div>
+
+            <!-- 7) Nota de confianza -->
+            <div class="trustLine" aria-label="Nota de confianza">
+              <span class="trustPill">Ingredientes naturales</span>
+              <span class="trustPill">Sin químicos agresivos</span>
+              <span class="trustPill">Hecho con amor</span>
+            </div>
+
+            <!-- Mini disclaimer -->
+            <p class="disclaimer">
+              <strong>Disclaimer:</strong> Este producto no sustituye asesoría médica.
+            </p>
+          </section>
+
+          <!-- Columna derecha: mockup del producto -->
+          <aside class="productCard" aria-label="Presentación del producto">
+            <div class="productTop">
+              <div class="badge">Producto estrella · Noche</div>
+              <div class="priceHint">Remedio orgánico</div>
+            </div>
+
+            <div class="mockupWrap">
+              <!-- Mockup: frasco gotero elegante (SVG placeholder) -->
+              <svg class="bottle" viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Frasco gotero Raíces Sanas">
+                <defs>
+                  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity=".92"/>
+                    <stop offset="1" stop-color="#E9ECEF" stop-opacity=".95"/>
+                  </linearGradient>
+                  <linearGradient id="cap" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#6D4C41" stop-opacity=".95"/>
+                    <stop offset="1" stop-color="#4E342E" stop-opacity=".98"/>
+                  </linearGradient>
+                  <linearGradient id="label" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#2E7D32" stop-opacity=".10"/>
+                    <stop offset="1" stop-color="#2E7D32" stop-opacity=".04"/>
+                  </linearGradient>
+                  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="1.2"/>
+                  </filter>
+                </defs>
+
+                <!-- Sombra base -->
+                <ellipse cx="180" cy="396" rx="92" ry="14" fill="#111827" opacity=".12" filter="url(#soft)"/>
+
+                <!-- Tapa -->
+                <path d="M138 58c0-16 12-28 28-28h28c16 0 28 12 28 28v16H138V58z" fill="url(#cap)"/>
+                <rect x="142" y="74" width="136" height="26" rx="13" fill="#4E342E" opacity=".95"/>
+
+                <!-- Gotero -->
+                <path d="M178 24c0-10 8-18 18-18s18 8 18 18v10h-36V24z" fill="#2F2F2F" opacity=".8"/>
+                <rect x="172" y="34" width="48" height="18" rx="9" fill="#2F2F2F" opacity=".85"/>
+
+                <!-- Botella (vidrio) -->
+                <path d="M128 100c0-12 10-22 22-22h60c12 0 22 10 22 22v26c0 10 4 20 11 27 20 21 33 52 33 89v124c0 38-31 70-70 70H164c-38 0-70-31-70-70V242c0-37 13-68 33-89 7-7 11-17 11-27v-26z" fill="url(#glass)" stroke="#D1D5DB" stroke-width="2"/>
+
+                <!-- Líquido -->
+                <path d="M118 272c0-10 8-18 18-18h88c10 0 18 8 18 18v102c0 10-8 18-18 18h-88c-10 0-18-8-18-18V272z" fill="#2E7D32" opacity=".18"/>
+
+                <!-- Etiqueta -->
+                <rect x="124" y="170" width="172" height="92" rx="18" fill="url(#label)" stroke="rgba(46,125,50,.25)" stroke-width="2"/>
+
+                <!-- Marca y texto -->
+                <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+                  <text x="210" y="205" font-size="18" font-weight="700" fill="#2E7D32">Raíces Sanas</text>
+                  <text x="210" y="228" font-size="13" font-weight="600" fill="#6D4C41">Gotas noche</text>
+                  <text x="210" y="250" font-size="12" font-weight="500" fill="#4B5563">Dormir profundo • Calma</text>
+                </g>
+
+                <!-- Decoración hoja -->
+                <path d="M150 188c20 0 32 12 36 20-6 16-22 30-46 32-12-14-11-36 10-52z" fill="#2E7D32" opacity=".12"/>
+                <path d="M162 230c14-12 26-22 44-34" stroke="#6D4C41" stroke-width="3" stroke-linecap="round" opacity=".35"/>
+              </svg>
+
+              <p class="mockupCaption">
+                Un frasco gotero elegante, pensado para acompañar tu ritual de noche.
+              </p>
+            </div>
+
+            <!-- Micro-copy adicional para conversión (sin claims absolutos) -->
+            <div class="miniCards" id="ingredientes">
+              <div class="mini">
+                <b>Fórmula suave</b>
+                <span>Ideal para integrar con hábitos de sueño: luz baja, respiración y constancia.</span>
+              </div>
+              <div class="mini">
+                <b>Aroma natural</b>
+                <span>Notas herbales ligeras para una sensación fresca y tranquila.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
